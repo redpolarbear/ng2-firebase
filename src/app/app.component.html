@@ -2,14 +2,8 @@
   {{title}}
 </h1>
 
-<form>
-  <input type="text" name="email" placeholder="Email">
-  <input type="password" name="password" placeholder="Password">
-  <!--<button type="submit">Login</button>-->
-  <button (click)="onClick($event)">test</button>
-</form>
-
-<p>Don't have an account?</p>
-
-
-<app-signup></app-signup>
+<nav>
+  <a routerLink="/login" routerLinkActive="active">Login</a>
+  <a routerLink="/signup" routerLinkActive="active">Signup</a>
+</nav>
+<router-outlet></router-outlet>

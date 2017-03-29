@@ -8,14 +8,10 @@ import { FirebaseService } from './services/firebase.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Book Stack Home';
+  title = 'ng2-firebase Home';
 
   constructor(
     private firebaseService: FirebaseService
   ) {}
   
-  onClick(e) {
-    console.log(e);
-  }
-
 }

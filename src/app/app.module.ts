@@ -8,13 +8,20 @@ import _ from 'lodash';
 // Component
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // Service
 import { FirebaseService } from './services/firebase.service';
 
+// Routing
+import { AppRouting } from './app-routing.module';
+
 let components = [
   AppComponent,
-  SignupComponent
+  SignupComponent,
+  LoginComponent,
+  PageNotFoundComponent
 ];
 
 let pipes = [];
@@ -36,12 +43,13 @@ export function providers() {
 @NgModule({
   declarations: declarations(),
   imports: [
+    AppRouting,
     BrowserModule,
     FormsModule,
     HttpModule
   ],
   providers: providers(),
-  entryComponents: entryComponents(),
+  // entryComponents: entryComponents(),
   bootstrap: [AppComponent]
 })
 export class AppModule { }
