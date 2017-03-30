@@ -2,8 +2,8 @@
   signup works!
 </p>
 
-<form>
-  <input type="email" name="email" placeholder="Email">
-  <input type="password" name="password" placeholder="Password">
+<form [formGroup]="signupForm" novalidate (ngSubmit)="doSignup(signupForm.value, signupForm.valid)">
+  <input type="email" name="email" placeholder="Email" formControlName="email">
+  <input type="password" name="password" placeholder="Password" formControlName="password">
   <button type="submit">Sign Up</button>
 </form>

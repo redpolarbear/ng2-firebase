@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import _ from 'lodash';
@@ -10,18 +10,23 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BookStackComponent } from './book-stack/book-stack.component';
+import { FoodStackComponent } from './food-stack/food-stack.component';
 
 // Service
 import { FirebaseService } from './services/firebase.service';
+import { AuthService } from './services/auth.service';
 
 // Routing
-import { AppRouting } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 let components = [
   AppComponent,
-  SignupComponent,
+  BookStackComponent,
+  FoodStackComponent,
   LoginComponent,
-  PageNotFoundComponent
+  PageNotFoundComponent,
+  SignupComponent
 ];
 
 let pipes = [];
@@ -30,12 +35,13 @@ export function declarations() {
   return _.concat(components, pipes);
 }
 
-export function entryComponents() {
-  return components;
-}
+// export function entryComponents() {
+//   return components;
+// }
 
 export function providers() {
   return [
+    AuthService,
     FirebaseService
   ];
 }
@@ -43,10 +49,11 @@ export function providers() {
 @NgModule({
   declarations: declarations(),
   imports: [
-    AppRouting,
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: providers(),
   // entryComponents: entryComponents(),
