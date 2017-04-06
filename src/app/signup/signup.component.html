@@ -3,6 +3,8 @@
 </p>
 
 <form [formGroup]="signupForm" novalidate (ngSubmit)="doSignup(signupForm.value, signupForm.valid)">
+  <input type="text" name="first" placeholder="First Name" formControlName="first">
+  <input type="text" name="last" placeholder="Last Name" formControlName="last">
   <input type="email" name="email" placeholder="Email" formControlName="email">
   <input type="password" name="password" placeholder="Password" formControlName="password">
   <button type="submit">Sign Up</button>

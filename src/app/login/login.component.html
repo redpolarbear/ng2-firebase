@@ -1,12 +1,18 @@
-<p>
-  login works!
-</p>
 
-<form>
-  <input type="text" name="email" placeholder="Email">
-  <input type="password" name="password" placeholder="Password">
+<form [formGroup]="loginForm" novalidate (ngSubmit)="doLogin(loginForm.value, loginForm.valid)">
+  <input type="email" name="email" placeholder="Email" formControlName="email">
+  <input type="password" name="password" placeholder="Password" formControlName="password">
   <!--<button type="submit">Login</button>-->
-  <button>test</button>
+  <button type="submit">Login</button>
 </form>
+
+<button (click)="getCurrentUser()">get current user</button>
+<button (click)="doLogout()">Logout</button>
+
+<p *ngIf="currentUser">{{ currentUser.email }}</p>
+<p *ngIf="currentUser">{{ currentUser}}</p>
+<!--<div *ngIf="currentUser">
+  <img *ngIf="currentUser" [src]="currentUser.profile.photoURL">
+</div>-->
 
 <p>Don't have an account?</p>

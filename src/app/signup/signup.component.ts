@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as md5 from 'md5';
 
 // Interface - Model
-import { User } from '../models/user';
+import { User } from '../models/user.interface';
 
 // Service
 import { AuthService } from '../services/auth.service';
@@ -27,20 +28,19 @@ export class SignupComponent implements OnInit {
 
   _buildForm() {
     this.signupForm = this.formBuilder.group({
+      first: ['', [<any>Validators.required, <any>Validators.minLength(3)]],
+      last: ['', [<any>Validators.required, <any>Validators.minLength(3)]],
       email: ['', [<any>Validators.required, <any>Validators.minLength(6)]],
-      password: ['', [<any>Validators.required, <any>Validators.minLength(6)]]
+      password: ['', [<any>Validators.required, <any>Validators.minLength(3)]]
     })
   }
 
-  doSignup(user: User, isValid: boolean) {
+  doSignup(formValues: any, isValid: boolean) {
     if (isValid) {
-      console.log(user);
-      this.authService.signUp(user)
-        .then( (currentUser) => {
-          if (currentUser) {
-            console.log('Signup Callback', currentUser);
-          } else {
-            
+      this.authService.signUp(formValues)
+        .then( (message) => {
+          if (message) {
+            console.log('Signup Callback', message);
           }
         })
         .catch( (error) => {
@@ -49,11 +49,11 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  subscribeToFormChanges() {
-    const mySignupFormChanges$ = this.signupForm.valueChanges;
-    mySignupFormChanges$.subscribe( x => {
-      console.log(x);
-    })
-  }
+  // subscribeToFormChanges() {
+  //   const mySignupFormChanges$ = this.signupForm.valueChanges;
+  //   mySignupFormChanges$.subscribe( x => {
+  //     console.log(x);
+  //   })
+  // }
 
 }
