@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { FirebaseService } from './services/firebase.service';
-import { AuthService } from './services/auth.service';
+import { FirebaseService } from './providers/firebase.service';
+import { AuthService } from './providers/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +14,7 @@ export class AppComponent {
 
   constructor(
     private firebaseService: FirebaseService,
-    private authService: AuthService
-  ) {
-
-    this.authService.onAuthState()
-      .then( (currentUser) => {
-        console.log('user logged in', currentUser);
-      })
-      .catch( (error) => {
-
-      });
-  }
+    private authService: AuthService,
+    private router: Router) {}
   
 }

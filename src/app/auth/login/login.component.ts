@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
 // Provider
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../providers/auth.service';
 
 // Interface
-import { User } from '../models/user.interface';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',

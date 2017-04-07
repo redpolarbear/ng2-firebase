@@ -4,7 +4,7 @@ import * as md5 from 'md5';
 import * as _ from 'lodash';
 
 // Interface - Model
-import { User } from '../models/user.interface';
+import { User } from '../auth/user';
 
 @Injectable()
 export class AuthService {
@@ -17,30 +17,25 @@ export class AuthService {
     this.fireAuth = firebase.auth();
     this.fireDb = firebase.database();
     this.fireUserRef = this.fireDb.ref('users/');
+
+    this.LoggedIn = !!this.fireAuth.currentUser;
+
   }
 
-  onAuthState(): any {
+  onAuthState(): any{
     return new Promise( (resolve, reject) => {
       let uid: string;
-      this.fireAuth.onAuthStateChanged( (user) => {
+      return this.fireAuth.onAuthStateChanged( (user) => {
         if (user) {
           // User is signed in.
           this.LoggedIn = true;
-          // uid = user.uid;
-          // return this.findUserById(uid)
-          resolve(user);
+          resolve(user.uid);
         } else {
           // No user is signed in.
           this.LoggedIn = false;
-          reject()
+          resolve();
         }
       })
-      // // .then( (snap) => {
-      //   resolve(snap.val()[uid]);
-      // })
-      // .catch( (error) => {
-      //   reject(error);
-      // })
     })
   }
 

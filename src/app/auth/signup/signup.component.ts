@@ -3,10 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import * as md5 from 'md5';
 
 // Interface - Model
-import { User } from '../models/user.interface';
+import { User } from '../user';
 
 // Service
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../providers/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +23,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this._buildForm();
-    // this.subscribeToFormChanges();
   }
 
   _buildForm() {
