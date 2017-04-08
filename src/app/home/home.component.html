@@ -1,3 +1,11 @@
 <p>
   home works!
 </p>
+
+<ul>
+  <li *ngFor="let user of users">
+    <img [src]="(user.profile)?.photoURL" style="width: 24px; height: 24px;">
+    {{ user.uid }} - {{ user.email }}
+    <button>following</button>
+  </li>
+</ul>
