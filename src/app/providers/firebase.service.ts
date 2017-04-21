@@ -7,12 +7,12 @@ export class FirebaseService {
   constructor() {
     // Initialize Firebase
     const config = {
-      apiKey: "AIzaSyAF4XeoyoKOfwqcZyATfrzvK9pnEEp4v_I",
-      authDomain: "clock-in-dev.firebaseapp.com",
-      databaseURL: "https://clock-in-dev.firebaseio.com",
-      projectId: "clock-in-dev",
-      storageBucket: "clock-in-dev.appspot.com",
-      messagingSenderId: "290948925717"
+      apiKey: "",
+      authDomain: "",
+      databaseURL: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: ""
     };
     firebase.initializeApp(config);
   }
